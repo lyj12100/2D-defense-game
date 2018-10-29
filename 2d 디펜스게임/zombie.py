@@ -1,32 +1,18 @@
 from pico2d import*
 
-class MoveState:
-    @staticmethod
-    def enter(zombie):
-        zombie.frame = 0
-        zombie.dir = zombie.velocity
-
-    @staticmethod
-    def exit(zombie):
-        pass
-
-    @staticmethod
-    def do(zombie):
-        zombie.frame = (zombie.frame+1)%11
-        zombie.y += zombie.velocity
-
-    @staticmethod
-    def draw(zombie):
-        zombie.image.clip_draw(0,zombie.frame*31,25,28,300,y)
-
-class Zombie:
+class Normal_Zombie:
     def __init__(self):
         self.x, self.y = 300,619
-        self.image = load_image('norm_zombie.png')
+        self.frame =0
         self.dir = 1
+        self.normal_zombie = load_image('norm_zombie.png')
 
     def update(self):
-        self.velocity += 1
+        self.y -= self.dir
+        self.frame = (self.frame+1)%11
+
+    def draw(self):
+        self.normal_zombie.clip_draw(0,self.frame*31,25,28,300,self.y)
 
 
 
