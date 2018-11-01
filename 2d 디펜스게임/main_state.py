@@ -8,19 +8,24 @@ import game_framework
 import game_world
 
 from zombie import Normal_Zombie
+from zombie import Fast_Zombie
 from map import Map
 
 name = "MainState"
 
 normal_zombie = None
+fast_zombie = None
 map = None
 
 def enter():
-    global normal_zombie , map
+    global normal_zombie ,fast_zombie, map
     normal_zombie = Normal_Zombie()
+    fast_zombie = Fast_Zombie()
     map = Map()
     game_world.add_object(map,0)
     game_world.add_object(normal_zombie,1)
+
+    #game_world.add_object(fast_zombie,1)
 
 def exit():
     game_world.clear()
