@@ -3,7 +3,7 @@
 objects = [[],[]]
 
 
-def add_object(o, layer):
+def add_object(o: object, layer: object) -> object:
     objects[layer].append(o)
 
 

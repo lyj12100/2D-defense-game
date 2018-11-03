@@ -7,25 +7,32 @@ from pico2d import*
 import game_framework
 import game_world
 
+import tower
 from zombie import Normal_Zombie
 from zombie import Fast_Zombie
+
+
 from map import Map
 
 name = "MainState"
 
 normal_zombie = None
 fast_zombie = None
+tower1 = None
 map = None
 
+
 def enter():
-    global normal_zombie ,fast_zombie, map
+    global normal_zombie ,fast_zombie, map, tower1
     normal_zombie = Normal_Zombie()
     fast_zombie = Fast_Zombie()
+    tower1 = tower.Tower1()
     map = Map()
     game_world.add_object(map,0)
     game_world.add_object(normal_zombie,1)
 
-    #game_world.add_object(fast_zombie,1)
+    game_world.add_object(fast_zombie,1)
+    game_world.add_object(tower1,1)
 
 def exit():
     game_world.clear()
